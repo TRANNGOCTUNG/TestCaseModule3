@@ -12,7 +12,7 @@
 </head>
 <body>
 <center>
-    <h2><a href="/users?action=users">List All User</a></h2>
+    <h2><a href="/staff?action=staff">List All User</a></h2>
 </center>
 <div align="center">
     <form method="post">
