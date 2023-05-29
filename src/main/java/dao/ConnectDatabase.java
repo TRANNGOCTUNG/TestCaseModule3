@@ -12,13 +12,11 @@ public class ConnectDatabase {
     protected static Connection getConnection(){
         Connection connection = null;
         try{
-            Class.forName("com.mysql.jdbc.Driver");
             connection = DriverManager.getConnection(jdbcURL, jdbcUserName, jdbcPassword);
             System.out.println("Successfully connected");
-        }catch (ClassNotFoundException | SQLException e){
+        }catch ( SQLException e){
             e.printStackTrace();
         }
          return connection;
         }
-
 }

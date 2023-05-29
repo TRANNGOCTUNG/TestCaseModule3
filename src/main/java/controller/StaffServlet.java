@@ -66,18 +66,18 @@ public class StaffServlet extends HttpServlet {
     private void listStaff(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException,SQLException{
         List<Staff> staffList = staffDao.selectAllStaff();
         request.setAttribute("staffList",staffList);
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("");
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("view/list.jsp");
         requestDispatcher.forward(request,response);
     }
     private void showNewFrom(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException,SQLException{
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("");
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("view/create.jsp");
         requestDispatcher.forward(request,response);
     }
     private void showEditFrom(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException,SQLException{
         int id = Integer.parseInt(request.getParameter("id"));
         Staff newStaff = staffDao.selectStaff(id);
         request.setAttribute("newStaff",newStaff);
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("");
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("view/edit.jsp");
         requestDispatcher.forward(request,response);
     }
     private void insertStaff(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException,SQLException{
@@ -89,7 +89,7 @@ public class StaffServlet extends HttpServlet {
         String department_name = request.getParameter("department_name");
         Staff newUsers = new Staff(name,email,country,phone_number,salary,department_name);
         staffDao.insertStaff(newUsers);
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("");
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("view/create.jsp");
         requestDispatcher.forward(request,response);
     }
     private void updateStaff(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException,SQLException{
@@ -102,7 +102,7 @@ public class StaffServlet extends HttpServlet {
         String department_name = request.getParameter("department_name");
         Staff user = new Staff(id,name,email,country,phone_number,salary,department_name);
         staffDao.updateStaff(user);
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("");
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("view/edit.jsp");
         requestDispatcher.forward(request,response);
     }
     private void deleteStaff(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException,SQLException{
@@ -110,7 +110,7 @@ public class StaffServlet extends HttpServlet {
         staffDao.deleteStaff(id);
         List<Staff> staffList = staffDao.selectAllStaff();
         request.setAttribute("staffList",staffList);
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("");
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("view/list.jsp");
         requestDispatcher.forward(request,response);
 
     }
